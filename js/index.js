@@ -1,8 +1,8 @@
 import { userDev } from "./services/user.js";
 import { reposDev } from "./services/repositories.js";
 
-import { user } from "/objects/user.js";
-import { screen } from "/objects/screen.js";
+import { user } from "./objects/user.js";
+import { screen } from "./objects/screen.js";
 
 const btn = document.getElementById('btn-search');
 const caixaEntrada = document.getElementById('input-search');
