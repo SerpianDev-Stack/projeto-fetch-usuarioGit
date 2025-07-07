@@ -150,6 +150,19 @@ main {
     color: #fff
 }
 
+.events h2 {
+    color: red;
+}
+
+.user-stats {
+    padding: 30px;
+}
+
+.user-stats p {
+    font-size: 20px;
+    color: red;
+}
+
 .container .profile-data.hide {
     display: none;
 }

@@ -11,17 +11,53 @@ const screen = {
         </div>`;
 
         let repositoriesItens = '';
-        user.repositories.forEach(repo => repositoriesItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a> </li>`);
+        user.repositories.forEach(repo =>
+            repositoriesItens += `
+    <li>
+      <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+      <span> - ${repo.language ?? 'Linguagem não informada'}</span><br>
+      ⭐ ${repo.stargazers_count} | 🍴 ${repo.forks_count} | 👀 ${repo.watchers_count}
+    </li>
+  `
+        );
 
         if (user.repositories.length > 0) {
-            this.userProfile.innerHTML += `<div class="repositories section">
-                                             <h2>Repositórios</h2>
-                                             <ul>${repositoriesItens}</ul>
-                                           </div>`
+            this.userProfile.innerHTML += `
+        <div class="repositories section">
+          <h2>Repositórios</h2>
+          <ul>${repositoriesItens}</ul>
+        </div>`;
         }
+
     },
     renderNotFound() {
         this.userProfile.innerHTML = "<h3>Usuário não encotrado</h3>"
+    },
+
+    renderEvents(events) {
+        const eventsSection = document.querySelector('.events');
+
+        if (!events.length) {
+            eventsSection.innerHTML = "<h2>Eventos Recentes</h2><p>Esse usuário não possui eventos públicos.</p>";
+            return;
+        }
+
+        eventsSection.innerHTML = "<h2>Eventos Recentes:</h2>";
+
+        events.forEach(event => {
+            const repoName = event.repo.name;
+            const message = event.type === "PushEvent"
+                ? event.payload.commits?.[0]?.message || "Sem mensagem de commit"
+                : "Sem mensagem de commit";
+
+            const eventElement = document.createElement("div");
+            eventElement.innerText = `${repoName} - ${message}`;
+            eventsSection.appendChild(eventElement);
+        });
+    },
+
+    renderSocialData(seguindo, seguidores) {
+        document.querySelector('.user-stats').innerHTML = `<p>Seguidores: ${seguidores}</p><p>Seguindo: ${seguindo} </p`;
     }
 };
 
