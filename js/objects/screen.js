@@ -32,6 +32,12 @@ const screen = {
     },
     renderNotFound() {
         this.userProfile.innerHTML = "<h3>Usuário não encotrado. Verifique se o nome do usuário está correto.</h3>"
+
+        const eventsSection = document.querySelector('.events');
+        const userStatsSection = document.querySelector('.user-stats');
+
+        if (eventsSection) eventsSection.innerHTML = "";
+        if (userStatsSection) userStatsSection.innerHTML = "";
     },
 
     renderEvents(events) {
