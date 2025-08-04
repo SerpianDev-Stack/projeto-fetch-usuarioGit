@@ -31,7 +31,7 @@ const screen = {
 
     },
     renderNotFound() {
-        this.userProfile.innerHTML = "<h3>Usuário não encotrado</h3>"
+        this.userProfile.innerHTML = "<h3>Usuário não encotrado. Verifique se o nome do usuário está correto.</h3>"
     },
 
     renderEvents(events) {

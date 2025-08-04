@@ -6,6 +6,7 @@ import { user } from "./objects/user.js";
 import { screen } from "./objects/screen.js";
 import { socialDev } from "./objects/social.js";
 
+const token = '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'
 const btn = document.getElementById('btn-search');
 const caixaEntrada = document.getElementById('input-search');
 
@@ -34,24 +35,26 @@ function validateEmptyInput(userName) {
 }
 
 async function getUserData(userName) {
+
     const userResponse = await userDev(userName);
-    const repositoriesResponse = await reposDev(userName);
-    const eventsResponse = await eventsDev(userName);
-    const socialResponse = await socialDev(userName);
-    const seguidores = socialResponse.seguidores;
-    const seguindo = socialResponse.seguindo;
 
     if (userResponse.message === 'Not Found') {
         screen.renderNotFound();
         return;
     }
 
+    const repositoriesResponse = await reposDev(userName);
+    const eventsResponse = await eventsDev(userName);
+    const socialResponse = await socialDev(userName);
+    const seguidores = socialResponse.seguidores;
+    const seguindo = socialResponse.seguindo;
+
     user.setInfo(userResponse);
     user.setRepositories(repositoriesResponse);
 
     screen.renderUser(user);
     screen.renderEvents(eventsResponse);
-    screen.renderSocialData(seguindo,seguidores);
+    screen.renderSocialData(seguindo, seguidores);
 
 }
 
