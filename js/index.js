@@ -1,10 +1,10 @@
-import { userDev } from "./js/services/user.js";
-import { reposDev } from "./js/services/repositories.js";
-import { eventsDev } from "./js/services/events.js";
+import { userDev } from "./services/user.js";
+import { reposDev } from "./services/repositories.js";
+import { eventsDev } from "./services/events.js";
 
-import { user } from "./js/objects/user.js";
-import { screen } from "./js/objects/screen.js";
-import { socialDev } from "./js/objects/social.js";
+import { user } from "./objects/user.js";
+import { screen } from "./objects/screen.js";
+import { socialDev } from "./objects/social.js";
 
 const btn = document.getElementById('btn-search');
 const caixaEntrada = document.getElementById('input-search');
