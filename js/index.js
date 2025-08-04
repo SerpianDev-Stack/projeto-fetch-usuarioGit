@@ -6,7 +6,6 @@ import { user } from "./objects/user.js";
 import { screen } from "./objects/screen.js";
 import { socialDev } from "./objects/social.js";
 
-const token = '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'
 const btn = document.getElementById('btn-search');
 const caixaEntrada = document.getElementById('input-search');
 
